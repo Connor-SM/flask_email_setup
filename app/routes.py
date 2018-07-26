@@ -1,5 +1,5 @@
 from app import app, db
-from flask import render_template, flash, redirect, url_for, request, json
+from flask import render_template, flash, redirect, url_for, request, json, jsonify
 from app.forms import LoginForm, RegistrationForm, CheckPasswordForm, ResetPasswordRequestForm, ResetPasswordForm, SendDataForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
@@ -88,9 +88,13 @@ def display_data():
 
 @app.route('/handle_data', methods=['GET', 'POST'])
 def handle_data():
-    text =  request.form['my_text']
-    # return url string for ajax call to redirect to with variables
-    return text
+    # set data variable
+    data = {
+        'description' : request.form['description'],
+        'price' : request.form['price']
+    }
+    # return jsonified data to be parsed in js file
+    return jsonify(data)
 
 @app.route('/logout')
 def logout():

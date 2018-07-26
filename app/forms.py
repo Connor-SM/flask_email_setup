@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, FloatField
 from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
 from app.models import User
 
@@ -41,5 +41,6 @@ class ResetPasswordForm(FlaskForm):
     submit = SubmitField('Request Password Reset')
 
 class SendDataForm(FlaskForm):
-    my_text = StringField('Some text to be sent...')
+    description = StringField('Product Description...')
+    price = FloatField('Product Price...')
     submit = SubmitField('Send')
