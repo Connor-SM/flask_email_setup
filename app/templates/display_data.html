@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+  <div class="row">
+    <div class="col-md-4 offset-md-4 col-xs-8 offset-xs-2">
+      <h1>Display Data</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 offset-md-4 col-xs-8 offset-xs-2">
+      <div id="display_data">
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script type="text/javascript" src="../static/js/display_data.js"></script>
+{% endblock %}

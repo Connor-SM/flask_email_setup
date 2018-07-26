@@ -1,6 +1,6 @@
 from app import app, db
-from flask import render_template, flash, redirect, url_for, request
-from app.forms import LoginForm, RegistrationForm, CheckPasswordForm, ResetPasswordRequestForm, ResetPasswordForm
+from flask import render_template, flash, redirect, url_for, request, json
+from app.forms import LoginForm, RegistrationForm, CheckPasswordForm, ResetPasswordRequestForm, ResetPasswordForm, SendDataForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
 from app.email import send_password_reset_email
@@ -74,6 +74,23 @@ def reset_password(token):
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)
 
+@app.route('/send_data', methods=['GET', 'POST'])
+def send_data():
+    form = SendDataForm()
+    # form submission will be handled by js file
+    if form.validate_on_submit():
+        pass
+    return render_template('send_data.html', form=form)
+
+@app.route('/display_data/', methods=['GET', 'POST'])
+def display_data():
+    return render_template('display_data.html')
+
+@app.route('/handle_data', methods=['GET', 'POST'])
+def handle_data():
+    text =  request.form['my_text']
+    # return url string for ajax call to redirect to with variables
+    return text
 
 @app.route('/logout')
 def logout():

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+  <div class="row">
+    <div class="col-md-4 offset-md-4 col-xs-8 offset-xs-2">
+      <h1>Send Data</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 offset-md-4 col-xs-8 offset-xs-2">
+      {{ wtf.quick_form(form) }}
+      <!-- <form class="form-signin" action="/signUp" method="post" role="form">
+             <input type="text" name="my_text" class="form-control" placeholder="Text to send..." required autofocus>
+             <button class="btn btn-lg btn-primary btn-block" type="button">Send</button>
+         </form> -->
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script type="text/javascript" src="../static/js/send_data.js"></script>
+{% endblock %}
