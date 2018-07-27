@@ -1,4 +1,5 @@
 import os
+import psycopg2
 from dotenv import load_dotenv
 
 basedir = os.path.abspath(os.path.dirname(__file__))
