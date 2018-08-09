@@ -6,3 +6,15 @@ body {
 nav {
   margin-bottom: 50px;
 }
+
+#content {
+  display: block;
+  position: absolute;
+  top: 48%;
+  left: 48%;
+  z-index: 500;
+}
+
+.navbar {
+  border-radius: 0px;
+}

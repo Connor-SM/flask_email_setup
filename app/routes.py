@@ -4,7 +4,7 @@ from app.forms import LoginForm, RegistrationForm, CheckPasswordForm, ResetPassw
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
 from app.email import send_password_reset_email
-
+import time
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -73,6 +73,19 @@ def reset_password(token):
         flash('Your password has been reset.')
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)
+
+@app.route('/loading')
+def loading():
+    return render_template('loading.html')
+
+@app.route('/loading/data')
+def loading_data():
+    time.sleep(5)
+    data = {
+        'name': 'Max',
+        'age': 22
+    }
+    return render_template('loading_finished.html', data=data)
 
 
 @app.route('/logout')
